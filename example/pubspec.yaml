@@ -1,12 +1,9 @@
 name: logging_to_logcat_example
 description: Demonstrates how to use the logging_to_logcat plugin.
-
-# The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 environment:
-  sdk: ">=3.0.0-1.0.dev <4.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   logcat_monitor : ^0.0.6
