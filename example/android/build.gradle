@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath 'com.android.tools.build:gradle:8.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -20,21 +20,22 @@ allprojects {
 
 rootProject.buildDir = '../build'
 subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
     afterEvaluate { project ->
         if (project.hasProperty('android')) {
             project.android {
-                if(project.group == 'com.logger.logging_to_logcat') {
-                    namespace 'com.logger.logging_to_logcat'
+                if(project.group == 'com.example.logcat_monitor') {
+                    namespace 'com.example.logcat_monitor'
                 }
             }
         }
     }
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-subprojects {
+
     project.evaluationDependsOn(':app')
 }
 
-task clean(type: Delete) {
+tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
